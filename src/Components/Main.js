@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 import axios from "axios";
-import Main from "./Main";
 
-const App = () => {
-  const [step, useStep] = React.useState("Selecione o filme");
+const Main = () => {
   const [arrayBanners, setArrayBanners] = useState([]);
+  const [step, useStep] = React.useState("Selecione o filme");
 
   useEffect(() => {
     const requestMovies = axios.get(
@@ -18,13 +16,21 @@ const App = () => {
       console.log(data);
     });
   }, []);
-
   return (
-    <React.Fragment>
-      <Header />
-      <Main />
-    </React.Fragment>
+    <main>
+      <h4 className="step">{step}</h4>
+      <ul>
+        {arrayBanners.map((i) => {
+          const { id, overview, releaseDate, title, posterURL } = i;
+          return (
+            <li key={i.id} {...i}>
+              <img src={posterURL} alt="" />
+            </li>
+          );
+        })}
+      </ul>
+    </main>
   );
 };
 
-export default App;
+export default Main;
