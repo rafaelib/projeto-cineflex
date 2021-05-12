@@ -1,34 +1,37 @@
 import React from "react";
 import Header from "./Header";
+import axios from "axios";
 
 const App = () => {
   const [step, useStep] = React.useState("Selecione o filme");
+  const [arrayBanners, setArrayBanners] = React.useState([]);
 
-  const arrayMovies = [
-    {
-      key: "1",
-      img: "https://pbs.twimg.com/profile_images/1316575764427538433/yJdxtbBh.jpg",
-    },
-    {
-      key: "2",
-      img: "https://pbs.twimg.com/profile_images/1316575764427538433/yJdxtbBh.jpg",
-    },
-    {
-      key: "3",
-      img: "https://pbs.twimg.com/profile_images/1316575764427538433/yJdxtbBh.jpg",
-    },
-    {
-      key: "43",
-      img: "https://pbs.twimg.com/profile_images/1316575764427538433/yJdxtbBh.jpg",
-    },
-  ];
+  function toProcessAnswer(response) {
+    const { data } = response;
+    //setArrayBanners(data);
+    console.log(data);
+  }
+
+  const requestMovies = axios.get(
+    "https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies"
+  );
+  requestMovies.then(toProcessAnswer);
 
   return (
     <React.Fragment>
       <Header />
       <main>
-        <span className="step">{step}</span>
-        <section></section>
+        <h4 className="step">{step}</h4>
+        <ul>
+          {arrayBanners.map((i) => {
+            const { id, overview, releaseDate, title, posterURL } = i;
+            return (
+              <li key={i.id} {...i}>
+                <img src={posterURL} alt="" />
+              </li>
+            );
+          })}
+        </ul>
       </main>
     </React.Fragment>
   );
