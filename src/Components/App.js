@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./Header";
-import axios from "axios";
-import Main from "./Main";
+import Home from "./Home";
+import Sessions from "./Sessions";
+import Seats from "./Seats";
 
 const App = () => {
-  const [step, useStep] = React.useState("Selecione o filme");
-  const [arrayBanners, setArrayBanners] = useState([]);
-
-  useEffect(() => {
-    const requestMovies = axios.get(
-      "https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies"
-    );
-
-    requestMovies.then((response) => {
-      const { data } = response;
-      setArrayBanners(data);
-      console.log(data);
-    });
-  }, []);
-
   return (
     <React.Fragment>
       <Header />
-      <Main />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/sessoes/:idFilme" exact>
+            <Sessions />
+          </Route>
+          <Route path="/assentos/:idSessao" exact>
+            <Seats />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </React.Fragment>
   );
 };

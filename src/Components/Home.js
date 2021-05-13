@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Main = () => {
+const Home = () => {
   const [arrayBanners, setArrayBanners] = useState([]);
-  const [step, useStep] = React.useState("Selecione o filme");
 
   useEffect(() => {
     const requestMovies = axios.get(
@@ -18,14 +18,16 @@ const Main = () => {
   }, []);
   return (
     <main>
-      <h4 className="step">{step}</h4>
+      <h4 className="step">Selecione o filme</h4>
       <ul>
         {arrayBanners.map((i) => {
-          const { id, overview, releaseDate, title, posterURL } = i;
+          const { id, posterURL } = i;
           return (
-            <li key={i.id} {...i}>
-              <img src={posterURL} alt="" />
-            </li>
+            <Link to={`/sessoes/${id}`}>
+              <li key={i.id} {...i}>
+                <img src={posterURL} alt="" />
+              </li>
+            </Link>
           );
         })}
       </ul>
@@ -33,4 +35,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Home;
