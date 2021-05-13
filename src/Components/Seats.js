@@ -2,15 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Seat from "./Seat";
 
 const Seats = () => {
-  function selecionar() {
-    console.log("selecionado");
-  }
-  function avisar() {
-    alert("lugar indisponivel");
-  }
-
   const [seats, setSeats] = useState([]);
   const id = useParams().idSessao;
   console.log(id);
@@ -26,11 +20,6 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${id}/seat
       setSeats(response.data.seats);
     });
   }, []);
-  {
-    seats.map((i) => {
-      console.log(i);
-    });
-  }
   return (
     <main>
       <h4 className="step">Selecione o(s) assento(s)</h4>
@@ -38,12 +27,7 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${id}/seat
         {seats.map((i) => {
           const { id, name, isAvailable } = i;
           console.log(isAvailable);
-          return (
-            <li
-              className={isAvailable ? "" : "unavailable"}
-              onClick={isAvailable ? selecionar : avisar}
-            ></li>
-          );
+          return <Seat name={name} id={id} isAvailable={isAvailable} />;
         })}
       </ul>
     </main>
