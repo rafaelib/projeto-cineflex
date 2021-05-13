@@ -136,3 +136,20 @@ footer {
   text-align: center;
   color: #ffffff;
 }
+.seats-list {
+  justify-content: flex-start;
+}
+.seats-list li {
+  height: 25px;
+  width: 26px;
+  border-radius: 12px;
+  box-shadow: none;
+  border: 1px solid #808f9d;
+  margin-right: 8px;
+}
+.unavailable {
+  background: red;
+}
+.seats-list .teste {
+  background: blue;
+}
