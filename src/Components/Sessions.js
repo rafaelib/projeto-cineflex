@@ -51,7 +51,7 @@ const Sessions = (props) => {
           })}
         </ul>
       </main>
-      <Footer title={title} image={image} weekday="" hour="" />
+      <Footer title={title} image={image} movieDate="" />
     </React.Fragment>
   );
 };

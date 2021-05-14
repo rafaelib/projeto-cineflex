@@ -108,7 +108,7 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${id}/seat
           </button>
         </Link>
       </div>
-      <Footer title={title} image={image} weekday={weekday} hour={hour} />
+      <Footer title={title} image={image} movieDate={`${weekday} - ${hour}`} />
     </React.Fragment>
   );
 };

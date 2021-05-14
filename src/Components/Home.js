@@ -23,8 +23,8 @@ const Home = () => {
         {arrayBanners.map((i) => {
           const { id, posterURL } = i;
           return (
-            <Link to={`/sessoes/${id}`}>
-              <li key={i.id} {...i}>
+            <Link key={i.id} to={`/sessoes/${id}`}>
+              <li {...i}>
                 <img src={posterURL} alt="" />
               </li>
             </Link>
