@@ -48,6 +48,7 @@ const App = () => {
               setNameValue={setNameValue}
               nameValue={nameValue}
               seatsArray={seatsArray}
+              setSeatsArray={setSeatsArray}
             />
           </Route>
         </Switch>

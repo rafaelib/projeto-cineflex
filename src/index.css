@@ -21,7 +21,7 @@ h1 {
   line-height: 40px;
 }
 
-h4 {
+.step {
   font-size: 24px;
   font-weight: 400;
   line-height: 28px;
@@ -32,18 +32,14 @@ h4 {
 }
 
 main {
-  margin-top: 67px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  margin-top: 97px;
 }
 
-ul {
+.home-list {
   width: 85%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  margin: 0 auto;
 }
 
 li {
@@ -100,6 +96,7 @@ footer {
 
 .days-list {
   margin-bottom: 117px;
+  margin-left: 24px;
   display: flex;
   flex-direction: column;
 }
@@ -138,7 +135,11 @@ footer {
   color: #ffffff;
 }
 .seats-list {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
+  margin: 0 auto;
+  width: 84%;
 }
 .seats-list li,
 .select-options li {
@@ -174,12 +175,12 @@ footer {
   letter-spacing: -0.013em;
 }
 .inputs-container {
-  margin: 0 auto;
   width: 85%;
   display: flex;
   flex-direction: column;
   margin-top: 40px;
   margin-bottom: 55px;
+  margin-left: 30px;
 }
 input {
   margin-bottom: 10px;
@@ -231,6 +232,7 @@ input::placeholder {
   letter-spacing: 0.04em;
   text-align: center;
   color: #247a6b;
+  margin-bottom: 30px;
 }
 .home-btn {
   outline: none;
@@ -239,7 +241,6 @@ input::placeholder {
   width: 225px;
   border-radius: 3px;
   background: #e8833a;
-  margin-bottom: 200px;
   font-size: 18px;
   font-weight: 400;
   line-height: 21px;
@@ -250,6 +251,7 @@ input::placeholder {
 
 .info-list {
   margin-bottom: 50px;
+  margin-left: 30px;
   height: auto;
 }
 .info-list .info-title {

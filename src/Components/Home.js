@@ -13,13 +13,12 @@ const Home = () => {
     requestMovies.then((response) => {
       const { data } = response;
       setArrayBanners(data);
-      console.log(data);
     });
   }, []);
   return (
     <main>
-      <h4>Selecione o filme</h4>
-      <ul>
+      <h4 className="step">Selecione o filme</h4>
+      <ul className="home-list">
         {arrayBanners.map((i) => {
           const { id, posterURL } = i;
           return (

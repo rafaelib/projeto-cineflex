@@ -32,7 +32,6 @@ const Seats = (props) => {
   const [reservedSeats, setReservedSeats] = useState([]);
 
   function sendObject() {
-    console.log(seatsArray);
     serverObject.ids = reservedSeats;
     serverObject.name = nameValue;
     serverObject.cpf = cpfValue;
@@ -41,7 +40,6 @@ const Seats = (props) => {
       `https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many`,
       serverObject
     );
-    send.then(console.log("banana"));
   }
 
   useEffect(() => {
@@ -63,7 +61,7 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${id}/seat
   return (
     <React.Fragment>
       <main>
-        <h4>Selecione o(s) assento(s)</h4>
+        <h4 className="step">Selecione o(s) assento(s)</h4>
         <ul className="seats-list">
           {seats.map((i) => {
             const { id, name, isAvailable } = i;
