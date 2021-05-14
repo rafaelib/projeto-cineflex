@@ -28,7 +28,7 @@ const Sessions = () => {
   return (
     <React.Fragment>
       <main>
-        <h4 className="step">Selecione o horário</h4>
+        <h4>Selecione o horário</h4>
         <ul className="days-list">
           {days.map((i) => {
             const { id, date, weekday, showtimes } = i;

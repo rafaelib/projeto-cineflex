@@ -18,7 +18,7 @@ const Home = () => {
   }, []);
   return (
     <main>
-      <h4 className="step">Selecione o filme</h4>
+      <h4>Selecione o filme</h4>
       <ul>
         {arrayBanners.map((i) => {
           const { id, posterURL } = i;
