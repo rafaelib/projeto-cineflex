@@ -2,8 +2,7 @@ import React from "react";
 
 const Seat = (props) => {
   const [selectedFlag, setSelectedFlag] = React.useState(false);
-  const { reservedSeats, setReservedSeats, serverObject, setServerObject } =
-    props;
+  const { reservedSeats, setReservedSeats } = props;
   const { isAvailable, name, id } = props;
   function select() {
     if (!selectedFlag) {

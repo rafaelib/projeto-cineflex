@@ -4,6 +4,7 @@ import Header from "./Header";
 import Home from "./Home";
 import Sessions from "./Sessions";
 import Seats from "./Seats";
+import Success from "./Success";
 
 const App = () => {
   return (
@@ -19,6 +20,9 @@ const App = () => {
           </Route>
           <Route path="/assentos/:idSessao" exact>
             <Seats />
+          </Route>
+          <Route path="/sucesso" exact>
+            <Success />
           </Route>
         </Switch>
       </BrowserRouter>

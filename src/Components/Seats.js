@@ -5,6 +5,7 @@ import axios from "axios";
 import Seat from "./Seat";
 import Footer from "./Footer";
 import Options from "./Options";
+import { Link } from "react-router-dom";
 
 const Seats = () => {
   const id = useParams().idSessao;
@@ -22,10 +23,16 @@ const Seats = () => {
   const [cpfValue, setCpfValue] = useState([]);
   const [nameValue, setNameValue] = useState([]);
 
-  function teste() {
+  function sendObject() {
     serverObject.ids = reservedSeats;
+    serverObject.name = nameValue;
+    serverObject.cpf = cpfValue;
     setServerObject(serverObject);
-    console.log(serverObject);
+    const send = axios.post(
+      `https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many`,
+      serverObject
+    );
+    send.then(console.log("banana"));
   }
 
   useEffect(() => {
@@ -67,15 +74,27 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${id}/seat
       </main>
       <div className="inputs-container">
         <span>Nome do comprador:</span>
-        <input type="text" placeholder="Digite seu nome..." />
+        <input
+          type="text"
+          placeholder="Digite seu nome..."
+          value={nameValue}
+          onChange={(e) => setNameValue(e.target.value)}
+        />
 
         <span>CPF do comprador:</span>
-        <input type="text" placeholder="Digite seu nome..." />
+        <input
+          type="text"
+          placeholder="Digite seu nome..."
+          value={cpfValue}
+          onChange={(e) => setCpfValue(e.target.value)}
+        />
       </div>
       <div className="container-reserve-btn">
-        <button onClick={teste} className="reserve-btn">
-          Reservar assento(s)
-        </button>
+        <Link to="/sucesso">
+          <button onClick={sendObject} className="reserve-btn">
+            Reservar assento(s)
+          </button>
+        </Link>
       </div>
       <Footer title={title} image={image} weekday={weekday} date={date} />
     </React.Fragment>
