@@ -1,7 +1,8 @@
 import React from "react";
 
 const Footer = (props) => {
-  const { image, title, date, weekday } = props;
+  const x = "-";
+  const { image, title, hour, weekday } = props;
   return (
     <footer>
       <span className="container-img">
@@ -10,7 +11,7 @@ const Footer = (props) => {
       <span className="title">
         {title}
         <br />
-        {`${weekday} - ${date}`}
+        {`${weekday} - ${hour}`}
       </span>
     </footer>
   );

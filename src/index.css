@@ -224,3 +224,45 @@ input::placeholder {
   left: 0;
   z-index: 1000;
 }
+.success-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: #247a6b;
+}
+.home-btn {
+  outline: none;
+  border: none;
+  height: 42px;
+  width: 225px;
+  border-radius: 3px;
+  background: #e8833a;
+  margin-bottom: 200px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: #ffffff;
+}
+
+.info-list {
+  margin-bottom: 50px;
+  height: auto;
+}
+.info-list .info-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  color: #293845;
+}
+.info-list p {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0.04em;
+  color: #293845;
+}

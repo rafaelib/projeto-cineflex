@@ -7,11 +7,21 @@ import Footer from "./Footer";
 import Options from "./Options";
 import { Link } from "react-router-dom";
 
-const Seats = () => {
+const Seats = (props) => {
+  const {
+    hour,
+    setHour,
+    setDay,
+    cpfValue,
+    setCpfValue,
+    nameValue,
+    setNameValue,
+    seatsArray,
+    setSeatsArray,
+  } = props;
   const id = useParams().idSessao;
   const [seats, setSeats] = useState([]);
   const [weekday, setWeekday] = useState("");
-  const [date, setDate] = useState("");
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [serverObject, setServerObject] = useState({
@@ -20,10 +30,9 @@ const Seats = () => {
     cpf: "",
   });
   const [reservedSeats, setReservedSeats] = useState([]);
-  const [cpfValue, setCpfValue] = useState([]);
-  const [nameValue, setNameValue] = useState([]);
 
   function sendObject() {
+    console.log(seatsArray);
     serverObject.ids = reservedSeats;
     serverObject.name = nameValue;
     serverObject.cpf = cpfValue;
@@ -44,10 +53,11 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${id}/seat
 
     request.then((response) => {
       setWeekday(response.data.day.weekday);
-      setDate(response.data.day.date);
+      setDay(response.data.day.date);
       setImage(response.data.movie.posterURL);
       setTitle(response.data.movie.title);
       setSeats(response.data.seats);
+      setHour(response.data.name);
     });
   }, []);
   return (
@@ -59,6 +69,8 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${id}/seat
             const { id, name, isAvailable } = i;
             return (
               <Seat
+                seatsArray={seatsArray}
+                setSeatsArray={setSeatsArray}
                 serverObject={serverObject}
                 setServerObject={setServerObject}
                 reservedSeats={reservedSeats}
@@ -96,7 +108,7 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${id}/seat
           </button>
         </Link>
       </div>
-      <Footer title={title} image={image} weekday={weekday} date={date} />
+      <Footer title={title} image={image} weekday={weekday} hour={hour} />
     </React.Fragment>
   );
 };

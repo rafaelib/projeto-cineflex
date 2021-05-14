@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
-const Sessions = () => {
+const Sessions = (props) => {
   const { idFilme } = useParams();
   const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
+  const { title, setTitle } = props;
   const [days, setDays] = useState([]);
 
   useEffect(() => {
@@ -38,20 +38,20 @@ const Sessions = () => {
                   {weekday} - {date}
                 </span>
                 <div className="container-btns">
-                  <Link to={`/assentos/${showtimes[0].id}`}>
-                    <button>{showtimes[0].name}</button>
-                  </Link>
-                  <Link to={`/assentos/${showtimes[1].id}`}>
-                    <button>{showtimes[1].name}</button>{" "}
-                    {/* REFATORAR DEPOIS */}
-                  </Link>
+                  {showtimes.map((i) => {
+                    return (
+                      <Link to={`/assentos/${i.id}`}>
+                        <button>{i.name}</button>
+                      </Link>
+                    );
+                  })}
                 </div>
               </li>
             );
           })}
         </ul>
       </main>
-      <Footer title={title} image={image} />
+      <Footer title={title} image={image} weekday="" hour="" />
     </React.Fragment>
   );
 };

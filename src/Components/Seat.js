@@ -2,15 +2,17 @@ import React from "react";
 
 const Seat = (props) => {
   const [selectedFlag, setSelectedFlag] = React.useState(false);
-  const { reservedSeats, setReservedSeats } = props;
+  const { reservedSeats, setReservedSeats, seatsArray, setSeatsArray } = props;
   const { isAvailable, name, id } = props;
   function select() {
     if (!selectedFlag) {
       setSelectedFlag(true);
       setReservedSeats([...reservedSeats, id]);
+      setSeatsArray([...seatsArray, name]);
     } else {
       setSelectedFlag(false);
       setReservedSeats(reservedSeats.filter((i) => i !== id));
+      setSeatsArray(seatsArray.filter((i) => i !== name));
     }
   }
   function warning() {
