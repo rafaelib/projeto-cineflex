@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const Sessions = () => {
   const { idFilme } = useParams();
@@ -21,8 +22,6 @@ const Sessions = () => {
       setImage(posterURL);
       setTitle(title);
       setDays(days);
-      console.log(title);
-      console.log(data);
     });
   }, []);
 
@@ -43,7 +42,8 @@ const Sessions = () => {
                     <button>{showtimes[0].name}</button>
                   </Link>
                   <Link to={`/assentos/${showtimes[1].id}`}>
-                    <button>{showtimes[1].name}</button>
+                    <button>{showtimes[1].name}</button>{" "}
+                    {/* REFATORAR DEPOIS */}
                   </Link>
                 </div>
               </li>
@@ -51,12 +51,7 @@ const Sessions = () => {
           })}
         </ul>
       </main>
-      <footer>
-        <span className="container-img">
-          <img src={image} alt="banner filme" />
-        </span>
-        <span className="title">{title}</span>
-      </footer>
+      <Footer title={title} image={image} />
     </React.Fragment>
   );
 };

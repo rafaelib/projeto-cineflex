@@ -2,18 +2,18 @@ import React from "react";
 
 const Seat = (props) => {
   const [selectedFlag, setSelectedFlag] = React.useState(false);
+  const [reservedSeats, setReservedSeats] = React.useState([]);
   const { isAvailable, name, id } = props;
   function selecionar() {
     if (!selectedFlag) {
       setSelectedFlag(true);
-      console.log(name);
+      setReservedSeats([...reservedSeats, id]);
     } else {
       setSelectedFlag(false);
-      console.log(name);
     }
   }
   function warning() {
-    alert("lugar indisponivel");
+    alert("Este assento não está disponível");
   }
   return (
     <li
@@ -21,7 +21,9 @@ const Seat = (props) => {
         isAvailable === false ? "unavailable" : selectedFlag ? "teste" : ""
       }
       onClick={isAvailable ? selecionar : warning}
-    ></li>
+    >
+      {name}
+    </li>
   );
 };
 
